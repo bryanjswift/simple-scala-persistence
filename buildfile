@@ -5,10 +5,6 @@ require 'buildr/scala'
 repositories.remote << "http://www.ibiblio.org/maven2/"
 # Scala Tools
 repositories.remote << 'http://scala-tools.org/repo-releases/'
-# Google Maven Repository
-repositories.remote << 'http://google-maven-repository.googlecode.com/svn/repository/'
-# Google Maven Snapshot Repository
-repositories.remote << 'http://google-maven-repository.googlecode.com/svn/snapshot-repository/'
 
 # Constants
 VERSION_NUMBER = '0.1'
@@ -42,5 +38,5 @@ define 'ssp' do
 	compile.using(:warnings => 'true', :target => '1.5').with DEPS, CLASSPATH
 	test.with TEST_DEPS
 	test.using :specs
-	package(:jar, :id => 'quotidian').with DEPS
+	package(:jar, :id => 'simple-scala-persistence').with DEPS
 end
