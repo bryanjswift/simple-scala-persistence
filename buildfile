@@ -11,7 +11,7 @@ repositories.remote << 'http://google-maven-repository.googlecode.com/svn/reposi
 repositories.remote << 'http://google-maven-repository.googlecode.com/svn/snapshot-repository/'
 
 # Constants
-VERSION_NUMBER = '1.0'
+VERSION_NUMBER = '0.1'
 # Dependencies
 # Scala Jars should be included from SCALA_HOME environment variable (or macports install)
 SCALA = group('scala-library','scala-compiler',:under => 'org.scala-lang', :version => '2.7.5')
