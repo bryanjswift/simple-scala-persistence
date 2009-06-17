@@ -1,4 +1,4 @@
-package com.whiskeydirectory.persistence
+package com.bryanjswift.persistence
 
 import com.bryanjswift.persistence.annotations.{Entity,Persistent,PersistentEntity}
 
