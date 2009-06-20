@@ -1,9 +1,10 @@
 package com.bryanjswift.persistence
 
 import com.bryanjswift.persistence.annotations.{Entity,Persistent,PersistentEntity}
+import java.io.Serializable
 
 trait Savable {
-	def id:Long
+	def id:Serializable
 	lazy val table:String = getEntityName(this.getClass())
 	lazy val fields:List[String] = {
 		for {
