@@ -23,13 +23,6 @@ define 'ssp' do
 	DEPS = [SCALA]
 	CLASSPATH = DEPS
 	TEST_DEPS = [SPECS] << DEPS
-	# Build config
-	webapp = _('src/main/webapp/*')
-	resources = _('target/resources/*')
-	src = _('target/classes/*')
-	war = _('target/war')
-	warclasses = _(war, 'WEB-INF/classes')
-	warlib = _(war, 'WEB-INF/lib')
 	
 	# Buildr properties
 	project.group = 'com.bryanjswift'
