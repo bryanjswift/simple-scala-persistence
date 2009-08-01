@@ -1,24 +1,24 @@
-package com.bryanjswift.persistence
+package basic.persistence
 
-import com.bryanjswift.persistence.annotations.{Entity,Persistent,PersistentEntity}
+import basic.persistence.annotations.{Entity,Persistent,PersistentEntity}
 import java.io.Serializable
 
 trait Savable {
 	def id:Serializable
-	lazy val table:String = getEntityName(this.getClass())
-	lazy val fields:List[String] = {
+	private lazy val table:String = getEntityName(this.getClass())
+	private lazy val fields:List[String] = {
 		for {
 			method <- getMethods(this.getClass())
 			if method.getAnnotation(classOf[Persistent]) != null
 		} yield method.getName()
 	}
-	lazy val values:List[Any] = {
+	private lazy val values:List[Any] = {
 		val c = this.getClass()
 		for {
 			field <- fields
 		} yield c.getDeclaredMethod(field).invoke(this)
 	}
-	lazy val entities:List[Savable] = {
+	private lazy val entities:List[Savable] = {
 		for {
 			method <- getMethods(this.getClass())
 			if (method.getAnnotation(classOf[PersistentEntity]) != null)
