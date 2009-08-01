@@ -1,4 +1,4 @@
-package com.bryanjswift.persistence
+package basic.persistence
 
 import java.io.Serializable
 
