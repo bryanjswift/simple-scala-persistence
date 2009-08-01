@@ -5,20 +5,20 @@ import java.io.Serializable
 
 trait Savable {
 	def id:Serializable
-	private lazy val table:String = getEntityName(this.getClass())
-	private lazy val fields:List[String] = {
+	lazy val table:String = getEntityName(this.getClass())
+	lazy val fields:List[String] = {
 		for {
 			method <- getMethods(this.getClass())
 			if method.getAnnotation(classOf[Persistent]) != null
 		} yield method.getName()
 	}
-	private lazy val values:List[Any] = {
+	lazy val values:List[Any] = {
 		val c = this.getClass()
 		for {
 			field <- fields
 		} yield c.getDeclaredMethod(field).invoke(this)
 	}
-	private lazy val entities:List[Savable] = {
+	lazy val entities:List[Savable] = {
 		for {
 			method <- getMethods(this.getClass())
 			if (method.getAnnotation(classOf[PersistentEntity]) != null)
